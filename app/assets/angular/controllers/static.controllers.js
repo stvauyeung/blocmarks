@@ -1,5 +1,9 @@
 controllers = angular.module('staticCtrls', []);
 
-controllers.controller('StaticHomeCtrl', [
+controllers
+  .controller('StaticHomeCtrl', [
 
-]);
+  ])
+  .controller('UsersCtrl', [
+
+  ]);

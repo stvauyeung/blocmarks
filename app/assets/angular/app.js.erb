@@ -2,8 +2,13 @@ blocMarks = angular.module('blocMarks', ['ui.router', 'blocMarksControllers'])
 
 blocMarks.config(['$stateProvider', '$locationProvider', function($stateProvider, $locationProvider) {
   $locationProvider.html5Mode(true);
-  $stateProvider.state('landing', {
-    url: '/',
-    templateUrl: '<%= asset_path("templates/landing.html") %>'
-  });
+  $stateProvider
+    .state('landing', {
+      url: '/',
+      templateUrl: '<%= asset_path("templates/landing.html") %>'
+    })
+    .state('newUser', {
+      url: '/users/new',
+      templateUrl: '<%= asset_path("templates/new-user.html.erb") %>'
+    });
 }]);
