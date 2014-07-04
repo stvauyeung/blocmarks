@@ -1,11 +1,9 @@
 <h1>Create An Account</h1>
 <p>Start blocmarking in 2 minutes with our super simple signup!</p>
-<%= form_for @user, url: { action: 'create' } do |f| %>
-  <fieldset>
-    <%= f.text_field :name, label: 'User Name' %>
-    <%= f.text_field :email, label: 'Email Address' %>
-    <%= f.password_field :password %>
-    <%= f.password_field :password_confirmation, label: 'Confirm Password' %>
-    <%= f.submit 'Create Account' %>
-  </fieldset>
-<% end %>
+<form ng-submit='createNewUser(user)'>
+  <input type='text' ng-model='user.name'>
+  <input type='text' ng-model='user.email'>
+  <input type='password' ng-model='user.password'>
+  <input type='password' ng-model='user.password_confirmation'>
+  <input type='submit' value='Create User'>
+</form>

@@ -1,0 +1,12 @@
+var app = angular.module('blocMarksDirectives', []);
+
+app.directive('reloadLink', ['$window', function($window) {
+  return {
+    restrict: 'A',
+    link: function(scope, element, attributes) {
+      element.on('click', function () {
+        $window.location.href = attributes.href;
+      });
+    }
+  };
+}]);
