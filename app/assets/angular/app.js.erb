@@ -1,0 +1,23 @@
+blocMarks = angular.module('blocMarks', ['ui.router', 'blocMarksControllers', 'blocMarksDirectives']);
+
+blocMarks.config(['$stateProvider', '$locationProvider', '$httpProvider', function($stateProvider, $locationProvider, $httpProvider) {
+  $locationProvider.html5Mode(true);
+  $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
+  $stateProvider
+    .state('landing', {
+      url: '/',
+      templateUrl: '<%= asset_path("templates/landing.html") %>'
+    })
+    .state('newUser', {
+      url: '/users/new',
+      views: {   
+        'nav@': {
+          template: '<h1>Site Nav</h1>'
+        },
+        'main@': {
+          controller: 'UsersCtrl',
+          templateUrl: '<%= asset_path("templates/new-user.html.erb") %>'
+        }
+      }
+    });
+}]);
