@@ -6,13 +6,20 @@ blocMarks.config(['$stateProvider', '$locationProvider', '$httpProvider', functi
   $stateProvider
     .state('landing', {
       url: '/',
-      templateUrl: '<%= asset_path("templates/landing.html") %>'
+      views: {
+        'nav@': {
+          templateUrl: '<%= asset_path("templates/nav-bar.html") %>'
+        },
+        'main@': {
+          templateUrl: '<%= asset_path("templates/landing.html") %>'
+        }
+      }
     })
     .state('newUser', {
       url: '/users/new',
       views: {   
         'nav@': {
-          template: '<h1>Site Nav</h1>'
+          templateUrl: '<%= asset_path("templates/nav-bar.html") %>'
         },
         'main@': {
           controller: 'UsersCtrl',
