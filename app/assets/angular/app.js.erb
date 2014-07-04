@@ -23,7 +23,19 @@ blocMarks.config(['$stateProvider', '$locationProvider', '$httpProvider', functi
         },
         'main@': {
           controller: 'UsersCtrl',
-          templateUrl: '<%= asset_path("templates/new-user.html.erb") %>'
+          templateUrl: '<%= asset_path("templates/new-user.html") %>'
+        }
+      }
+    })
+    .state('newSession', {
+      url: '/login',
+      views: {
+        'nav@': {
+          templateUrl: '<%= asset_path("templates/nav-bar.html") %>'
+        },
+        'main@': {
+          controller: 'SessionsCtrl',
+          templateUrl: '<%= asset_path("templates/login.html") %>'
         }
       }
     });
