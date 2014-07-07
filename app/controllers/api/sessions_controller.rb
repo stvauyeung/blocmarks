@@ -1,11 +1,10 @@
-require 'pry'
-
 class Api::SessionsController < ApplicationController
   def create
+    params.permit(:email, :password)
     user = User.find_by_email(params[:email])
     if user && user.authenticate(params[:password])
-      session[:user] = user.id
-      render nothing: true
+      cookies.permanent[:user] = user.id
+      redirect_to home_path
     else
       render nothing: true
     end
