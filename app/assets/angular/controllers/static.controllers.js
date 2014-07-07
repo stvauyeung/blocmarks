@@ -19,7 +19,6 @@ controllers
     $scope.createSession = function(user) {
       $http.post('api/login', user)
         .success(function(data, status, headers) {
-          console.log('successful login');
           $window.location.href = '/'
         })
         .error(function(data, status, headers) {

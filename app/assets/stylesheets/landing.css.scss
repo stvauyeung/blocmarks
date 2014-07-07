@@ -1,0 +1,29 @@
+.landing-hero {
+  margin-top: 30px;
+  h1 {
+    font-size: 60px;
+    margin-bottom: 30px;
+    font-weight: 300;
+    color: #302109;
+  }
+  h2 {
+    font-size: 30px;
+    font-weight: 100;
+    margin-bottom: 20px;
+    color: #302109;
+  }
+  button {
+    padding-left: 50px;
+    padding-right: 50px;
+    background-color: #A043E3;
+    border-color: #AD9BFF;
+    &:hover {
+      background-color: #AD9BFF;
+      border-color: #A043E3;
+    }
+  }
+}
+
+.button-wrapper {
+  text-align: center;
+}
