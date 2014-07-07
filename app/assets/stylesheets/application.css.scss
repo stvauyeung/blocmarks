@@ -11,3 +11,18 @@
  *= require_self
  *= require_tree .
  */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+@mixin radial-gradient($colorOne, $colorTwo) {
+  background: -webkit-radial-gradient($colorOne, $colorTwo);
+  background: radial-gradient($colorOne, $colorTwo);
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  @include radial-gradient(#54E3B3, #AD9BFF);
+}

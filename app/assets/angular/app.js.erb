@@ -6,17 +6,36 @@ blocMarks.config(['$stateProvider', '$locationProvider', '$httpProvider', functi
   $stateProvider
     .state('landing', {
       url: '/',
-      templateUrl: '<%= asset_path("templates/landing.html") %>'
+      views: {
+        'nav@': {
+          templateUrl: '<%= asset_path("templates/nav-bar.html.erb") %>'
+        },
+        'main@': {
+          templateUrl: '<%= asset_path("templates/landing.html") %>'
+        }
+      }
     })
     .state('newUser', {
       url: '/users/new',
       views: {   
         'nav@': {
-          template: '<h1>Site Nav</h1>'
+          templateUrl: '<%= asset_path("templates/nav-bar.html.erb") %>'
         },
         'main@': {
           controller: 'UsersCtrl',
-          templateUrl: '<%= asset_path("templates/new-user.html.erb") %>'
+          templateUrl: '<%= asset_path("templates/new-user.html") %>'
+        }
+      }
+    })
+    .state('newSession', {
+      url: '/login',
+      views: {
+        'nav@': {
+          templateUrl: '<%= asset_path("templates/nav-bar.html.erb") %>'
+        },
+        'main@': {
+          controller: 'SessionsCtrl',
+          templateUrl: '<%= asset_path("templates/login.html") %>'
         }
       }
     });

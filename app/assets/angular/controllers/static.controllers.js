@@ -14,4 +14,15 @@ controllers
           alert('Error with creation');
         });
     };
+  }])
+  .controller('SessionsCtrl', ['$scope', '$http', '$window', function($scope, $http, $window) {
+    $scope.createSession = function(user) {
+      $http.post('api/login', user)
+        .success(function(data, status, headers) {
+          $window.location.href = '/'
+        })
+        .error(function(data, status, headers) {
+          console.log('failed login');
+        });
+    };
   }]);
