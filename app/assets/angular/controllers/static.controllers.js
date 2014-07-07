@@ -19,13 +19,13 @@ controllers
     $scope.createSession = function(user) {
       $http.post('api/login', user)
         .success(function(data, status, headers) {
-          $window.location.href = '/';
+          $window.location.href = '/home';
         })
         .error(function(data, status, headers) {
           console.log('failed login');
         });
     };
   }])
-  .controller('UserHomeCtrl', ['$scope', '$http', 'currentUser', function() {
-    $scope.user = currentUser;
+  .controller('UserHomeCtrl', ['$scope', '$http', 'CurrentUser', function($scope, $http, CurrentUser) {
+    $scope.user = CurrentUser;
   }]);

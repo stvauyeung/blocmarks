@@ -1,4 +1,4 @@
-blocMarks = angular.module('blocMarks', ['ui.router', 'blocMarksControllers', 'blocMarksDirectives', 'ngCookies']);
+blocMarks = angular.module('blocMarks', ['ui.router', 'blocMarksControllers', 'blocMarksDirectives', 'blocMarksServices', 'ngCookies', 'userModel']);
 
 blocMarks.config(['$stateProvider', '$locationProvider', '$httpProvider', function($stateProvider, $locationProvider, $httpProvider) {
   $locationProvider.html5Mode(true);
@@ -47,7 +47,7 @@ blocMarks.config(['$stateProvider', '$locationProvider', '$httpProvider', functi
         },
         'main@': {
           controller: 'UserHomeCtrl',
-          templateUrl: '<%= asset_path("templates/user-home.html" %>'
+          templateUrl: '<%= asset_path("templates/user-home.html") %>'
         }
       }
     });
