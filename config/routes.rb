@@ -3,6 +3,7 @@ Blocmarks::Application.routes.draw do
   namespace :api, defaults: {format: :json} do
     post '/users', to: 'users#create'
     post '/login', to: 'sessions#create'
+    get '/users/:id', to: 'users#show'
   end
 
   root to: 'static_pages#home'

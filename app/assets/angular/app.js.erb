@@ -47,7 +47,12 @@ blocMarks.config(['$stateProvider', '$locationProvider', '$httpProvider', functi
         },
         'main@': {
           controller: 'UserHomeCtrl',
-          templateUrl: '<%= asset_path("templates/user-home.html") %>'
+          templateUrl: '<%= asset_path("templates/user-home.html") %>',
+          resolve: {
+            currentUser: ['$cookies', 'CurrentUser', function(CurrentUser, $cookies) {
+              CurrentUser.get($cookies.user);
+            }]
+          }
         }
       }
     });
