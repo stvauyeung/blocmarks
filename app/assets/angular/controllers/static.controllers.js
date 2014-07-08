@@ -26,6 +26,11 @@ controllers
         });
     };
   }])
-  .controller('UserHomeCtrl', ['$scope', '$http', 'currentUser', function($scope, $http, currentUser) {
-    $scope.user = currentUser;
+  .controller('UserHomeCtrl', ['$scope', '$cookies', '$http', function($scope, $cookies, $http) {
+    
+    $http.get('/api/users/' + $cookies.user).success(function(data) {
+        $scope.user = data
+      }).error(function(data) {
+        console.log('error');
+      });
   }]);

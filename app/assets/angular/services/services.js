@@ -1,15 +1,11 @@
-app = angular.module('blocMarksServices', []);
+app = angular.module('blocMarksServices', ['ngCookies']);
 
-app.service('CurrentUser', ['$http', function($http) {
-  return {
-    get: function(userId) {
-      $http.get('/api/users/' + userId + '.json')
-        .success(function(data, status, headers) {
-          return data;
-        })
-        .erro(function(data, status, headers) {
-          console.log('error');
-        });
-    }
-  }
-}]);
+// app.service('CurrentUser', ['$http', '$cookies', function($http, $cookies) {
+//   return {
+//     $http.get('/api/users/' + $cookies.user).success(function(data, status, headers) {
+//         return data;
+//       }).error(function(data, status, headers) {
+//         console.log('error');
+//       });
+//   };
+// }]);
