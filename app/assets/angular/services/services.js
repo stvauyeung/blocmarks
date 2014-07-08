@@ -1,7 +1,11 @@
 app = angular.module('blocMarksServices', []);
 
-app.service('CurrentUser', ['$cookies', function($cookies) {
+app.factory('CurrentUser', ['$http', function($http) {
   return {
-    user: $cookies.user
+    get: function(userId) {
+      // $http call that makes a get request to the users#show route.
+      // You'll need to configure the route in routes.rb.
+      // Basically,
+    }
   }
 }]);
