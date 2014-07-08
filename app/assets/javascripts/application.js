@@ -14,7 +14,9 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require angular
+//= require angular-cookies
+//= require angular-resource
 //= require angular-ui-router
-//= require ../angular/app.js.erb
 //= require_tree ../angular
+//= require ../angular/app.js.erb
 //= require_tree .
