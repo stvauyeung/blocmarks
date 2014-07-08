@@ -1,5 +1,5 @@
-app = angular.module('userModel', ['ngCookies']);
+app = angular.module('userModel', ['ngCookies', 'ngResource']);
 
-app.factory('User', ['$http', '$cookies', function() {
-  console.log($cookies);
-}]);
+app.factory('User', function($resource) {
+  
+});
