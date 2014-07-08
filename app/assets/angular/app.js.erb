@@ -49,7 +49,7 @@ blocMarks.config(['$stateProvider', '$locationProvider', '$httpProvider', functi
           controller: 'UserHomeCtrl',
           templateUrl: '<%= asset_path("templates/user-home.html") %>',
           resolve: {
-            currentUser: ['CurrentUser', '$cookies', function($cookies) {
+            currentUser: ['$cookies', 'CurrentUser', function(CurrentUser, $cookies) {
               CurrentUser.get($cookies.user);
             }]
           }
