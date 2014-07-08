@@ -1,7 +1,13 @@
 app = angular.module('blocMarksServices', []);
 
-app.service('CurrentUser', ['$cookies', function($cookies) {
+app.service('CurrentUser', ['$http', function($http) {
   return {
-    user: $cookies.user
+    get: function(userId) {
+      $http({
+        url: '/api/users/:id',
+        method: "GET",
+        params: {id: userId}
+      });
+    }
   }
 }]);
