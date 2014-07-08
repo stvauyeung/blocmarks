@@ -47,7 +47,15 @@ blocMarks.config(['$stateProvider', '$locationProvider', '$httpProvider', functi
         },
         'main@': {
           controller: 'UserHomeCtrl',
-          templateUrl: '<%= asset_path("templates/user-home.html") %>'
+          templateUrl: '<%= asset_path("templates/user-home.html") %>',
+          resolve: {
+            currentUser: ['CurrentUser', '$cookies', function(CurrentUser, $cookies) {
+              // This will create an injectible service available only to this state called
+              // currentUser that will have the user object resolved by the time the 
+              // page loads.
+              CurrentUser.get($cookies.user_id)
+            }];
+          }
         }
       }
     });

@@ -5,7 +5,13 @@ class Api::UsersController < ApplicationController
   end
 
   def show
-    
+    # Not totally sure about this...still getting used to rails 4.
+    params.permit(:id)
+    # Query to find the user
+    @user = User.find_by_id(params[:id])
+    render json: @user, root: false
+    # Root false is too hard to explain in comments. I'll followup with an explanation
+    # when I have a little more time.
   end
 
   private
