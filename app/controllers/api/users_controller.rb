@@ -1,6 +1,7 @@
 class Api::UsersController < ApplicationController
   def create
     @user = User.create!(user_params)
+    flash[:success] = "User successfully created."
     render nothing: true
   end
 
