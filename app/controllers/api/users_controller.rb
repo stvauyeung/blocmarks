@@ -1,12 +1,13 @@
 class Api::UsersController < ApplicationController
   def create
     @user = User.create!(user_params)
+    flash[:success] = "User successfully created."
     render nothing: true
   end
 
   def show
     @user = User.find(params[:id])
-    render json: @user
+    render json: @user, root: false
   end
 
   private

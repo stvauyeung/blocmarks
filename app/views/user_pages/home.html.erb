@@ -1,2 +1,8 @@
 <div ui-view='nav'></div>
+<% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %> alert-dismissible">
+    <%= value %>
+    <a class="close" data-dismiss="alert" area-hidden="true">x</a>
+  </div>
+<% end %>
 <div ui-view='main'></div>

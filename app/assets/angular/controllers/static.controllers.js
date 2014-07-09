@@ -4,11 +4,12 @@ controllers
   .controller('StaticHomeCtrl', [
 
   ])
-  .controller('UsersCtrl', ['$scope', '$http', function($scope, $http) {
+  .controller('UsersCtrl', ['$scope', '$http', '$window', '$cookies', function($scope, $http, $window, $cookies) {
     $scope.createNewUser = function(user) {
       $http.post('/api/users', user)
         .success(function(data, status, headers) {
-          alert('Successful user creation');
+          $cookies.user = data.id;
+          $window.location.href = '/home';
         })
         .error(function(data, status, headers) {
           alert('Error with creation');
@@ -26,6 +27,10 @@ controllers
         });
     };
   }])
-  .controller('UserHomeCtrl', ['$scope', '$http', 'currentUser', function($scope, $http, currentUser) {
-    $scope.user = currentUser;
+  .controller('UserHomeCtrl', ['$scope', '$cookies', '$http', function($scope, $cookies, $http) {
+    $http.get('/api/users/' + $cookies.user).success(function(data) {
+      $scope.user = data;
+    }).error(function(data){
+      console.log('error');
+    });
   }]);
