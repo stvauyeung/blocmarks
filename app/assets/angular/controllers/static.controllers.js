@@ -33,4 +33,15 @@ controllers
     }).error(function(data){
       console.log('error');
     });
+  }])
+  .controller('BookmarksCtrl', ['$scope', '$http', '$window', '$cookies', function($scope, $http, $window, $cookies) {
+    $scope.createNewBookmark = function(bookmark) {
+      $http.post('api/bookmarks', bookmark)
+        .success(function(data) {
+          $window.location.href = '/home';
+        }).error(function() {
+          console.log('error with bookmark creation');
+        });
+    };
+    $scope.user_id = $cookies.user;
   }]);
