@@ -4,16 +4,9 @@ controllers
   .controller('StaticHomeCtrl', [
 
   ])
-  .controller('UsersCtrl', ['$scope', '$http', '$window', '$cookies', function($scope, $http, $window, $cookies) {
+  .controller('UsersCtrl', ['$scope', 'User', function($scope, User) {
     $scope.createNewUser = function(user) {
-      $http.post('/api/users', user)
-        .success(function(data, status, headers) {
-          $cookies.user = data.id;
-          $window.location.href = '/home';
-        })
-        .error(function(data, status, headers) {
-          alert('Error with creation');
-        });
+      User.create(user);
     };
   }])
   .controller('SessionsCtrl', ['$scope', '$http', '$window', function($scope, $http, $window) {
@@ -27,10 +20,19 @@ controllers
         });
     };
   }])
-  .controller('UserHomeCtrl', ['$scope', '$cookies', '$http', function($scope, $cookies, $http) {
-    $http.get('/api/users/' + $cookies.user).success(function(data) {
-      $scope.user = data;
-    }).error(function(data){
-      console.log('error');
-    });
+  .controller('UserHomeCtrl', ['$scope', 'currentUser', '$rootScope', function($scope, currentUser, $rootScope) {
+    $rootScope.user = currentUser.data;
+    $scope.user = $rootScope.currentUser;
+
+  }])
+  .controller('BookmarksCtrl', ['$scope', '$http', '$window', '$cookies', function($scope, $http, $window, $cookies) {
+    $scope.createNewBookmark = function(bookmark) {
+      $http.post('api/bookmarks', bookmark)
+        .success(function(data) {
+          $window.location.href = '/home';
+        }).error(function() {
+          console.log('error with bookmark creation');
+        });
+    };
+    $scope.user_id = $cookies.user;
   }]);

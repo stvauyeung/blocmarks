@@ -4,11 +4,12 @@ Blocmarks::Application.routes.draw do
     post '/users', to: 'users#create'
     post '/login', to: 'sessions#create'
     get '/users/:id', to: 'users#show'
+    post '/bookmarks', to: 'bookmarks#create'
   end
 
   root to: 'static_pages#home'
   get '/users/new', to: 'users#new'
   get '/login', to: 'sessions#new'
   get '/home', to: 'user_pages#home', as: 'home'
-
+  get '/add', to: 'bookmarks#new'
 end

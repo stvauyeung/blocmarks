@@ -47,7 +47,25 @@ blocMarks.config(['$stateProvider', '$locationProvider', '$httpProvider', functi
         },
         'main@': {
           controller: 'UserHomeCtrl',
-          templateUrl: '<%= asset_path("templates/user-home.html") %>'
+          templateUrl: '<%= asset_path("templates/user-home.html") %>',
+          resolve: {
+            currentUser: ['User', '$cookies', function(User, $cookies) {
+              user = User.get($cookies.user);
+              return user;
+            }]
+          }
+        }
+      }
+    })
+    .state('newBookmark', {
+      url: '/add',
+      views: {
+        'nav@': {
+          templateUrl: '<%= asset_path("templates/nav-bar.html.erb") %>'
+        },
+        'main@': {
+          controller: 'BookmarksCtrl',
+          templateUrl: '<%= asset_path("templates/new-bookmark.html") %>'
         }
       }
     });

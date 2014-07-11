@@ -1,4 +1,6 @@
 <div class="container">
-  <h1>Hello</h1>
-  <h2>{{ user.name }}</h2>
+  <h2>{{ user.name }}'s latest bookmarks</h2>
+  <div ng-repeat="bookmark in user.bookmarks">
+    <p>{{ bookmark.title }}</p>
+  </div>
 </div>
