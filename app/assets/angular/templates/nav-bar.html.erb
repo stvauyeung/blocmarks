@@ -7,8 +7,8 @@
       <ul class="nav navbar-nav navbar-right">
           <li><a href="/add" reload-link>Add Bookmark</a></li>
           <li><a href="/logout" reload-link>Log Out</a></li>
-          <li><a href="/users/new" reload-link>Sign Up</a></li>
-          <li><a href="/login" reload-link>Log In</a></li>
+          <li ng-show="user == null || user == undefined"><a href="/users/new" reload-link>Sign Up</a></li>
+          <li ng-show="user == null || user == undefined"><a href="/login" reload-link>Log In</a></li>
       </ul>
     </div>
   </div>
