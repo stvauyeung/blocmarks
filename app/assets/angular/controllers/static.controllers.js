@@ -20,7 +20,8 @@ controllers
         });
     };
   }])
-  .controller('UserHomeCtrl', ['$scope', '$rootScope', function($scope, $rootScope) {
+  .controller('UserHomeCtrl', ['$scope', '$rootScope', 'currentUser', function($scope, $rootScope, currentUser) {
+    $rootScope.user = currentUser.data;
     $scope.user = $rootScope.user;
   }])
   .controller('BookmarksCtrl', ['$scope', '$http', '$window', '$cookies', function($scope, $http, $window, $cookies) {
@@ -34,7 +35,6 @@ controllers
     };
     $scope.user_id = $cookies.user;
   }])
-  .controller('NavCtrl', ['$scope', '$rootScope', 'currentUser', function($scope, $rootScope, currentUser) {
-    $rootScope.user = currentUser.data;
-    $scope.user = $rootScope.user;
+  .controller('NavCtrl', ['$scope', 'signedIn', function($scope, signedIn) {
+    $scope.signedIn = signedIn;
   }]);

@@ -9,7 +9,16 @@ blocMarks.config(['$stateProvider', '$locationProvider', '$httpProvider', functi
       views: {
         'nav@': {
           controller: 'NavCtrl',
-          templateUrl: '<%= asset_path("templates/nav-bar.html.erb") %>'
+          templateUrl: '<%= asset_path("templates/nav-bar.html.erb") %>',
+          resolve: {
+            signedIn: ['User', '$cookies', function(User, $cookies) {
+              if ($cookies.user) {
+                return true;
+              } else {
+                return false;
+              };
+            }]
+          }
         },
         'main@': {
           templateUrl: '<%= asset_path("templates/landing.html") %>'
@@ -23,10 +32,12 @@ blocMarks.config(['$stateProvider', '$locationProvider', '$httpProvider', functi
           controller: 'NavCtrl',
           templateUrl: '<%= asset_path("templates/nav-bar.html.erb") %>',
           resolve: {
-            currentUser: ['User', '$cookies', function(User, $cookies) {
-              user = User.get($cookies.user);
-              console.log(user);
-              return user;
+            signedIn: ['User', '$cookies', function(User, $cookies) {
+              if ($cookies.user) {
+                return true;
+              } else {
+                return false;
+              };
             }]
           }
         },
@@ -43,10 +54,12 @@ blocMarks.config(['$stateProvider', '$locationProvider', '$httpProvider', functi
           controller: 'NavCtrl',
           templateUrl: '<%= asset_path("templates/nav-bar.html.erb") %>',
           resolve: {
-            currentUser: ['User', '$cookies', function(User, $cookies) {
-              user = User.get($cookies.user);
-              console.log(user);
-              return user;
+            signedIn: ['User', '$cookies', function(User, $cookies) {
+              if ($cookies.user) {
+                return true;
+              } else {
+                return false;
+              };
             }]
           }
         },
@@ -63,16 +76,25 @@ blocMarks.config(['$stateProvider', '$locationProvider', '$httpProvider', functi
           controller: 'NavCtrl',
           templateUrl: '<%= asset_path("templates/nav-bar.html.erb") %>',
           resolve: {
-            currentUser: ['User', '$cookies', function(User, $cookies) {
-              user = User.get($cookies.user);
-              console.log(user);
-              return user;
+            signedIn: ['User', '$cookies', function(User, $cookies) {
+              if ($cookies.user) {
+                return true;
+              } else {
+                return false;
+              };
             }]
           }
         },
         'main@': {
           controller: 'UserHomeCtrl',
           templateUrl: '<%= asset_path("templates/user-home.html") %>',
+          resolve: {
+            currentUser: ['User', '$cookies', function(User, $cookies) {
+              user = User.get($cookies.user);
+              console.log(user);
+              return user;
+            }]
+          }
         }
       }
     })
@@ -83,10 +105,12 @@ blocMarks.config(['$stateProvider', '$locationProvider', '$httpProvider', functi
           controller: 'NavCtrl',
           templateUrl: '<%= asset_path("templates/nav-bar.html.erb") %>',
           resolve: {
-            currentUser: ['User', '$cookies', function(User, $cookies) {
-              user = User.get($cookies.user);
-              console.log(user);
-              return user;
+            signedIn: ['User', '$cookies', function(User, $cookies) {
+              if ($cookies.user) {
+                return true;
+              } else {
+                return false;
+              };
             }]
           }
         },

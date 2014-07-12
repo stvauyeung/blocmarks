@@ -5,10 +5,10 @@
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-          <li ng-show="user"><a href="/add" reload-link>Add Bookmark</a></li>
-          <li ng-show="user"><a href="/api/logout" reload-link>Log Out</a></li>
-          <li ng-show="user == undefined"><a href="/users/new" reload-link>Sign Up</a></li>
-          <li ng-show="user == undefined"><a href="/login" reload-link>Log In</a></li>
+          <li ng-show="signedIn"><a href="/add" reload-link>Add Bookmark</a></li>
+          <li ng-show="signedIn"><a href="/api/logout" reload-link>Log Out</a></li>
+          <li ng-show="signedIn == false"><a href="/users/new" reload-link>Sign Up</a></li>
+          <li ng-show="signedIn == false"><a href="/login" reload-link>Log In</a></li>
       </ul>
     </div>
   </div>
