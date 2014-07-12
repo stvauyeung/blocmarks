@@ -3,6 +3,7 @@ Blocmarks::Application.routes.draw do
   namespace :api, defaults: {format: :json} do
     post '/users', to: 'users#create'
     post '/login', to: 'sessions#create'
+    get '/logout', to: 'sessions#destroy'
     get '/users/:id', to: 'users#show'
     post '/bookmarks', to: 'bookmarks#create'
   end
