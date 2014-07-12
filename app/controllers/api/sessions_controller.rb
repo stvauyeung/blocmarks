@@ -9,4 +9,9 @@ class Api::SessionsController < ApplicationController
       render nothing: true
     end
   end
+
+  def destroy
+    cookies[:user] = nil
+    redirect_to root_path
+  end
 end
