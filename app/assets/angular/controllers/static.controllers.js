@@ -20,20 +20,19 @@ controllers
         });
     };
   }])
-  .controller('UserHomeCtrl', ['$scope', '$rootScope', 'currentUser', function($scope, $rootScope, currentUser) {
+  .controller('UserHomeCtrl', ['$scope', '$rootScope', 'currentUser', '$modal', function($scope, $rootScope, currentUser, $modal) {
     $rootScope.user = currentUser.data;
     $scope.user = $rootScope.user;
-  }])
-  .controller('BookmarksCtrl', ['$scope', '$http', '$window', '$cookies', function($scope, $http, $window, $cookies) {
-    $scope.createNewBookmark = function(bookmark) {
-      $http.post('api/bookmarks', bookmark)
-        .success(function(data) {
-          $window.location.href = '/home';
-        }).error(function() {
-          console.log('error with bookmark creation');
-        });
+    $scope.open = function() {
+      var addModal = $modal.open({
+        templateUrl: 'newBookmark.html'
+      });
     };
-    $scope.user_id = $cookies.user;
+  }])
+  .controller('BookmarksCtrl', ['$scope', 'Bookmark', function($scope, Bookmark) {
+    $scope.createNewBookmark = function(bookmark) {
+      Bookmark.create(bookmark);
+    };
   }])
   .controller('NavCtrl', ['$scope', 'signedIn', function($scope, signedIn) {
     $scope.signedIn = signedIn;
