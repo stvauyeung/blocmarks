@@ -8,17 +8,7 @@ blocMarks.config(['$stateProvider', '$locationProvider', '$httpProvider', functi
       url: '/',
       views: {
         'nav@': {
-          controller: 'NavCtrl',
-          templateUrl: '<%= asset_path("templates/nav-bar.html.erb") %>',
-          resolve: {
-            signedIn: ['User', '$cookies', function(User, $cookies) {
-              if ($cookies.user) {
-                return true;
-              } else {
-                return false;
-              };
-            }]
-          }
+          templateUrl: '<%= asset_path("templates/nav-bar.html.erb") %>'
         },
         'main@': {
           templateUrl: '<%= asset_path("templates/landing.html") %>'
@@ -29,17 +19,7 @@ blocMarks.config(['$stateProvider', '$locationProvider', '$httpProvider', functi
       url: '/users/new',
       views: {   
         'nav@': {
-          controller: 'NavCtrl',
-          templateUrl: '<%= asset_path("templates/nav-bar.html.erb") %>',
-          resolve: {
-            signedIn: ['User', '$cookies', function(User, $cookies) {
-              if ($cookies.user) {
-                return true;
-              } else {
-                return false;
-              };
-            }]
-          }
+          templateUrl: '<%= asset_path("templates/nav-bar.html.erb") %>'
         },
         'main@': {
           controller: 'UsersCtrl',
@@ -51,17 +31,7 @@ blocMarks.config(['$stateProvider', '$locationProvider', '$httpProvider', functi
       url: '/login',
       views: {
         'nav@': {
-          controller: 'NavCtrl',
-          templateUrl: '<%= asset_path("templates/nav-bar.html.erb") %>',
-          resolve: {
-            signedIn: ['User', '$cookies', function(User, $cookies) {
-              if ($cookies.user) {
-                return true;
-              } else {
-                return false;
-              };
-            }]
-          }
+          templateUrl: '<%= asset_path("templates/nav-bar.html.erb") %>'
         },
         'main@': {
           controller: 'SessionsCtrl',
@@ -73,17 +43,8 @@ blocMarks.config(['$stateProvider', '$locationProvider', '$httpProvider', functi
       url: '/home',
       views: {
         'nav@': {
-          controller: 'NavCtrl',
-          templateUrl: '<%= asset_path("templates/nav-bar.html.erb") %>',
-          resolve: {
-            signedIn: ['User', '$cookies', function(User, $cookies) {
-              if ($cookies.user) {
-                return true;
-              } else {
-                return false;
-              };
-            }]
-          }
+          controller: 'UserNavCtrl',
+          templateUrl: '<%= asset_path("templates/signed-in-nav.html") %>'
         },
         'main@': {
           controller: 'UserHomeCtrl',
@@ -95,28 +56,6 @@ blocMarks.config(['$stateProvider', '$locationProvider', '$httpProvider', functi
               return user;
             }]
           }
-        }
-      }
-    })
-    .state('newBookmark', {
-      url: '/add',
-      views: {
-        'nav@': {
-          controller: 'NavCtrl',
-          templateUrl: '<%= asset_path("templates/nav-bar.html.erb") %>',
-          resolve: {
-            signedIn: ['User', '$cookies', function(User, $cookies) {
-              if ($cookies.user) {
-                return true;
-              } else {
-                return false;
-              };
-            }]
-          }
-        },
-        'main@': {
-          controller: 'BookmarksCtrl',
-          templateUrl: '<%= asset_path("templates/new-bookmark.html") %>'
         }
       }
     });
