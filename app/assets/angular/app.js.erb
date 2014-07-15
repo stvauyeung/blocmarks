@@ -58,17 +58,5 @@ blocMarks.config(['$stateProvider', '$locationProvider', '$httpProvider', functi
           }
         }
       }
-    })
-    .state('newBookmark', {
-      url: '/add',
-      views: {
-        'nav@': {
-          templateUrl: '<%= asset_path("templates/signed-in-nav.html") %>'
-        },
-        'main@': {
-          controller: 'BookmarksCtrl',
-          templateUrl: '<%= asset_path("templates/new-bookmark.html") %>'
-        }
-      }
     });
 }]);
