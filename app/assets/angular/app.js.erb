@@ -1,4 +1,4 @@
-blocMarks = angular.module('blocMarks', ['ui.router', 'blocMarksControllers', 'blocMarksDirectives', 'blocMarksServices', 'ngCookies', 'ngResource','userModel']);
+blocMarks = angular.module('blocMarks', ['ui.router', 'blocMarksControllers', 'blocMarksDirectives', 'blocMarksServices', 'ngCookies', 'ngResource','blocMarksModels', 'ui.bootstrap']);
 
 blocMarks.config(['$stateProvider', '$locationProvider', '$httpProvider', function($stateProvider, $locationProvider, $httpProvider) {
   $locationProvider.html5Mode(true);

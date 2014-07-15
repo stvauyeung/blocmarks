@@ -17,6 +17,7 @@
 //= require angular-cookies
 //= require angular-resource
 //= require angular-ui-router
+//= require angular-ui-bootstrap-tpls
 //= require_tree ../angular
 //= require ../angular/app.js.erb
 //= require_tree .
