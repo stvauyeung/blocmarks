@@ -1,6 +1,21 @@
 <div class="container">
-  <h2>{{ user.name }}'s latest bookmarks</h2>
-  <div ng-repeat="bookmark in user.bookmarks">
-    <p>{{ bookmark.title }}</p>
+  <div class="row">
+    <h1>{{ user.name }}'s latest bookmarks</h1>
+  </div>
+  <div class="row">
+    <div ng-repeat="bookmark in user.bookmarks" class="col-md-11">
+      <h3>{{ bookmark.title }}</h3>
+      <p>{{ bookmark.description }}</p>
+      <a href="">{{ bookmark.link }}</a>
+    </div>
   </div>
 </div>
+<!-- 
+
+<div ng-show="showInput == true">
+  <input ng-model="newLabel">
+  <a ng-click="createLabel(newLabel)"></a>
+</div>
+<div ng-show="showInput == false">
+  <button ng-click="showInput = true">Add</button>
+</div> -->
