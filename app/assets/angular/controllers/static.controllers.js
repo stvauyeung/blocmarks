@@ -32,6 +32,7 @@ controllers
   .controller('UserNavCtrl', ['$scope', '$modal', function($scope, $modal) {
     $scope.open = function() {
       var addModal = $modal.open({
+        controller: 'BookmarksCtrl',
         templateUrl: 'newBookmark.html'
       });
     };
