@@ -1,9 +1,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  helper_method :current_user, :logged_in? #add authorize here
+  helper_method :current_user, :logged_in?
 
   def current_user
-    @current_user ||= User.find(cookies[:user]) if cookies[:user]
+    @current_user ||= User.find(cookies[:user]) if cookies[:user] != ''
   end
 
   def logged_in?
@@ -11,8 +11,14 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize
-    # check if current user
-    # if not redirect_to root_path
-    # Rails.logger.error "This person was denied"
+    unless logged_in?
+      redirect_to root_path
+    end
+  end
+
+  def authorize_json
+    unless logged_in?
+      render json: { errors: "Unhappy face."}
+    end
   end
 end

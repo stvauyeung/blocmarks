@@ -1,4 +1,6 @@
 class Api::UsersController < ApplicationController
+  before_filter :authorize_json
+  
   def create
     @user = User.create!(user_params)
     cookies.permanent[:user] = @user.id

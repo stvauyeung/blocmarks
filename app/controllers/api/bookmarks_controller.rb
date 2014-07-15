@@ -1,4 +1,6 @@
 class Api::BookmarksController < ApplicationController
+  before_filter :authorize_json
+  
   def create
     bookmark = current_user.bookmarks.create(bookmark_params)
     render nothing: true

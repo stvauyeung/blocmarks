@@ -1,5 +1,5 @@
 class UserPagesController < ApplicationController
-  # before_filter :authorize
+  before_filter :authorize
 
   def home
       
