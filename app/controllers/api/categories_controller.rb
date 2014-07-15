@@ -6,4 +6,10 @@ class CategoriesController < ApplicationController
   def show
     
   end
+
+  private
+
+  def category_param
+    params.permit(:name)
+  end
 end
