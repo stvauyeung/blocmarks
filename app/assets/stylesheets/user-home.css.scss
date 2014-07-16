@@ -1,0 +1,16 @@
+.category-tag {
+  display: inline;
+  padding-left: 4px;
+  padding-right: 4px;  
+  &:first-child {
+    padding-left: 0px;
+  }
+}
+
+.category-tag-container {
+
+}
+
+.category-input-group {
+  max-width: 225px;
+}

@@ -20,9 +20,23 @@ controllers
         });
     };
   }])
-  .controller('UserHomeCtrl', ['$scope', '$rootScope', 'currentUser', function($scope, $rootScope, currentUser) {
+  .controller('UserHomeCtrl', ['$scope', '$rootScope', 'currentUser', '$http', function($scope, $rootScope, currentUser, $http) {
     $rootScope.user = currentUser.data;
     $scope.user = $rootScope.user;
+    $scope.showAddCategory = true;
+    $scope.createCategory = function(category, bookmarkId, bookmarkCategories) {
+      category.bookmark_id = bookmarkId;
+      $http.post('/api/categories', category)
+        .success(function(data) {
+          bookmarkCategories = data;
+          console.log(data);
+          $scope.newCategory = {};
+          console.log('success');
+        })
+        .error(function(data) {
+          console.log('error');
+        });
+    };
   }])
   .controller('BookmarksCtrl', ['$scope', 'Bookmark', function($scope, Bookmark) {
     $scope.createNewBookmark = function(bookmark) {

@@ -7,6 +7,19 @@
       <h3>{{ bookmark.title }}</h3>
       <p>{{ bookmark.description }}</p>
       <a href="">{{ bookmark.link }}</a>
+      <div class="category-tag-container">
+        <span class="category-tag" ng-repeat="category in bookmark.categories">{{ category.name }}</span>
+        <span class="btn btn-xs btn-default" ng-show="showAddCategory" ng-click="showAddCategory = false">Add Category</span>
+        <span class="input-group input-group-sm category-input-group" ng-show="showAddCategory == false" ng-init="newCategory = {}">
+          <span class="input-group-btn" ng-click="showAddCategory = true">
+            <span class="btn btn-danger btn-xs">X</span>
+          </span>
+          <input class="form-control" ng-model="newCategory.name">
+          <span class="input-group-btn">
+            <span class="btn btn-success btn-xs" ng-click="createCategory(newCategory, bookmark.id, bookmark.categories)">+</span>
+          </span>
+        </span>
+      </div>
     </div>
   </div>
 </div>
