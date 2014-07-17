@@ -20,21 +20,15 @@ controllers
         });
     };
   }])
-  .controller('UserHomeCtrl', ['$scope', '$rootScope', 'currentUser', '$http', function($scope, $rootScope, currentUser, $http) {
+  .controller('UserHomeCtrl', ['$scope', '$rootScope', 'currentUser', '$http', '$window', 'Category', function($scope, $rootScope, currentUser, $http, $window, Category) {
     $rootScope.user = currentUser.data;
     $scope.user = $rootScope.user;
-    $scope.showAddCategory = true;
+    $scope.showAddButton = true;
     $scope.createCategory = function(category, bookmarkId, bookmarkCategories) {
-      category.bookmark_id = bookmarkId;
-      $http.post('/api/categories', category)
-        .success(function(data) {
-          bookmarkCategories = data;
-          console.log(data);
-          $scope.newCategory = {};
-          console.log('success');
-        })
-        .error(function(data) {
-          console.log('error');
+        Category.create(category, bookmarkId, bookmarkCategories);
+        $scope.$watch(bookmarkCategories, function() {
+          console.log('bookmarkCategories updated');
+          $scope.showAddButton = true;
         });
     };
   }])
