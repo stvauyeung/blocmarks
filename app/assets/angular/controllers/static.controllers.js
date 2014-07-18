@@ -20,7 +20,7 @@ controllers
         });
     };
   }])
-  .controller('UserHomeCtrl', ['$scope', '$rootScope', 'currentUser', '$http', '$window', 'Category', function($scope, $rootScope, currentUser, $http, $window, Category) {
+  .controller('UserHomeCtrl', ['$scope', '$rootScope', 'currentUser', function($scope, $rootScope, currentUser) {
     $rootScope.user = currentUser.data;
     $scope.user = $rootScope.user;
   }])
