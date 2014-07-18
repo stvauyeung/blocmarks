@@ -1,1 +1,1 @@
-angular.module('blocMarksModels', ['userModel', 'bookmarkModel'])
+angular.module('blocMarksModels', ['userModel', 'bookmarkModel', 'categoryModel'])

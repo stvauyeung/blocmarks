@@ -1,0 +1,10 @@
+<span class="btn btn-xs btn-default" ng-show="showAddButton" ng-click="showAddButton = false">+ Category</span>
+<span class="input-group input-group-sm" ng-show="showAddButton == false">
+  <span class="input-group-btn">
+    <span class="btn btn-danger btn-xs" ng-click="showAddButton = true">X</span>
+  </span>
+  <input class="form-control" ng-model="newCategory.name">
+  <span class="input-group-btn">
+    <span class="btn btn-success btn-xs create-category-button" ng-click="createCategory()">+</span>
+  </span>
+</span>
