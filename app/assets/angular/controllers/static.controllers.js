@@ -23,14 +23,6 @@ controllers
   .controller('UserHomeCtrl', ['$scope', '$rootScope', 'currentUser', '$http', '$window', 'Category', function($scope, $rootScope, currentUser, $http, $window, Category) {
     $rootScope.user = currentUser.data;
     $scope.user = $rootScope.user;
-    $scope.showAddButton = true;
-    $scope.createCategory = function(category, bookmarkId, bookmarkCategories) {
-        Category.create(category, bookmarkId, bookmarkCategories);
-        $scope.$watch(bookmarkCategories, function() {
-          console.log('bookmarkCategories updated');
-          $scope.showAddButton = true;
-        });
-    };
   }])
   .controller('BookmarksCtrl', ['$scope', 'Bookmark', function($scope, Bookmark) {
     $scope.createNewBookmark = function(bookmark) {

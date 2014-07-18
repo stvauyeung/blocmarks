@@ -10,3 +10,25 @@ app.directive('reloadLink', ['$window', function($window) {
     }
   };
 }]);
+
+app.directive('createCategory', ['$http', 'Category', function($http, Category) {
+  return {
+    restrict: 'E',
+    templateUrl: "<%= asset_path('templates/create-category.html') %>",
+    scope: {
+      categoryArray: '='
+    },
+    link: function(scope, element, attributes) {
+      scope.showAddButton = true;
+      scope.newCategory = {};
+
+      scope.createCategory = function() {
+        Category.create(scope.newCategory, attributes.bookmarkId);
+        scope.categoryArray.push(scope.newCategory);
+        scope.newCategory = {};
+        scope.showAddButton = true;
+      }; 
+      // alert(JSON.stringify(attributes.categoryArray));
+    }
+  }
+}]);

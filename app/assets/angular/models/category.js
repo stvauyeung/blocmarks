@@ -2,7 +2,7 @@ app = angular.module('categoryModel', []);
 
 app.factory('Category', ['$http', '$window', function($http, $window) {
   return {
-    create: function(category, bookmarkId, bookmarkCategories) {
+    create: function(category, bookmarkId) {
       category.bookmark_id = bookmarkId;
       $http.post('/api/categories', category)
         .success(function(data) {
