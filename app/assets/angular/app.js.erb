@@ -58,17 +58,25 @@ blocMarks.config(['$stateProvider', '$locationProvider', '$httpProvider', functi
           }
         }
       }
+    })
+    .state('showCategory', {
+      url: '/categories/:id',
+      views: {
+        'nav@': {
+          controller: 'UserHomeCtrl',
+          templateUrl: '<%= asset_path("templates/signed-in-nav.html") %>'
+        },
+        'main@': {
+          controller: 'CategoryCtrl',
+          templateUrl: '<%= asset_path("templates/show-category.html") %>',
+          resolve: {
+            currentCategory: ['Category', '$stateParams', function(Category, $stateParams) {
+              category = Category.show($stateParams.id);
+              console.log('running resolve fcn');
+              return category;
+            }]
+          }
+        }
+      }
     });
-    // .state('showCategory', {
-    //   url: '/category/:id',
-    //   views: {
-    //     'nav@': {
-    //       controller: 'UserHomeCtrl',
-    //       templateUrl: '<%= asset_path("templates/signed-in-nav.html") %>'
-    //     },
-    //     'main@': {
-    //       controller: 
-    //     }
-    //   }
-    // });
 }]);

@@ -14,7 +14,7 @@ app.factory('Category', ['$http', '$window', function($http, $window) {
         });
     },
     show: function(categoryId) {
-      $http.get('/api/categories/' + categoryId)
+      return $http.get('/api/categories/' + categoryId)
         .success(function(data) {
           return data;
         })

@@ -14,4 +14,5 @@ Blocmarks::Application.routes.draw do
   get '/users/new', to: 'users#new'
   get '/login', to: 'sessions#new'
   get '/home', to: 'user_pages#home', as: 'home'
+  get '/categories/:id', to: 'categories#show'
 end
