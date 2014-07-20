@@ -12,7 +12,9 @@ class Api::CategoriesController < ApplicationController
   end
 
   def show
-    
+    @category = Category.find(params[:id])
+    @bookmarks = @category.bookmarks
+    render json: { category: @category, bookmarks: @bookmarks }, root: false
   end
 
   private

@@ -12,6 +12,15 @@ app.factory('Category', ['$http', '$window', function($http, $window) {
         .error(function(data) {
           console.log('error in category add');
         });
+    },
+    show: function(categoryId) {
+      $http.get('/api/categories/' + categoryId)
+        .success(function(data) {
+          return data;
+        })
+        .error(function(data) {
+          console.log('Error showing category')
+        })
     }
   }
 }]);
