@@ -40,5 +40,5 @@ controllers
   .controller('CategoryCtrl', ['$scope', 'currentCategory', function($scope, currentCategory) {
     console.log(currentCategory);
     $scope.category = currentCategory.data.category;
-    $scope.bookmarks = currentCategory.data.bookmarks;
+    $scope.bookmarks = $scope.category.bookmarks;
   }]);
