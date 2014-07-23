@@ -6,7 +6,8 @@
     <div ng-repeat="bookmark in user.bookmarks" class="col-md-11">
       <div class="col-md-1">
         <a href="" ng-click="vote(bookmark.id, true)">up</a><br>
-        <a href="" ng-click="vote(bookmark.id, false)">down</a>
+        <a href="" ng-click="vote(bookmark.id, false)">down</a><br>
+        <vote-count bookmark-id="bookmark.id"></vote-count>
       </div>
       <div class="col-md-11">
         <h3>{{ bookmark.title }}</h3>
