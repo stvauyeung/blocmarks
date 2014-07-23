@@ -1,0 +1,12 @@
+<div class="container">
+  <h1>{{ category.name }} bookmarks</h1>
+  <div ng-repeat="bookmark in bookmarks">
+    <h3>{{ bookmark.title }}</h3>
+    <p>{{ bookmark.description }}</p>
+    <a href="">{{ bookmark.link }}</a>
+    <div class="category-tag-container">
+      <span class="category-tag" ng-repeat="category in bookmark.categories"><a ui-sref="showCategory({id: category.id})">{{ category.name }}</a></span>
+      <create-category category-array="bookmark.categories" bookmark-id="{{ bookmark.id }}"></create-category>
+    </div>
+  </div>
+</div>

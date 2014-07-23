@@ -1,5 +1,5 @@
 class Api::UsersController < ApplicationController
-  before_filter :authorize_json
+  before_filter :authorize_json, only: :show
   
   def create
     @user = User.create!(user_params)

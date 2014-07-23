@@ -12,7 +12,11 @@ class Api::CategoriesController < ApplicationController
   end
 
   def show
-    
+    category = Category.find(params[:id])
+    bookmarks = category.bookmarks
+    bookmarks_categories = bookmarks.map { |bookmark| bookmark.as_json.merge(categories: bookmark.categories.as_json) }
+    @category = category.as_json.merge(bookmarks: bookmarks_categories)
+    render json: { category: @category }, root: false
   end
 
   private
