@@ -36,16 +36,17 @@ app.directive('createCategory', ['$http', 'Category', function($http, Category) 
 app.directive('voteCount', ['Bookmark', function(Bookmark) {
   return {
     restrict: 'E',
-    template: "<div>{{ bookmarkVoteCount() }}</div>",
+    template: "<div>{{ voteCount }}</div>",
     scope: {
       bookmarkId: '='
     },
     link: function(scope, element, attributes) {
-      scope.bookmarkVoteCount = function() {
+      var bookmarkVoteCount = function() {
         bookmark = Bookmark.show(scope.bookmarkId);
         voteCount = Object.keys(bookmark.votes).length;
         return voteCount;
       };
+      scope.voteCount = bookmarkVoteCount();
     }
   }
 }]);
