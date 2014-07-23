@@ -4,7 +4,7 @@ controllers
   .controller('StaticHomeCtrl', [
 
   ])
-  .controller('UsersCtrl', ['$scope', 'User', '$window', function($scope, User, $window) {
+  .controller('UsersCtrl', ['$scope', 'User', function($scope, User) {
     $scope.createNewUser = function(user) {
       User.create(user);
     };
