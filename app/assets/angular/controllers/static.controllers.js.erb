@@ -33,7 +33,7 @@ controllers
     $scope.open = function() {
       var addModal = $modal.open({
         controller: 'BookmarksCtrl',
-        templateUrl: 'newBookmark.html'
+        templateUrl: '<%= asset_path("templates/bookmark-modal.html") %>'
       });
     };
   }])
