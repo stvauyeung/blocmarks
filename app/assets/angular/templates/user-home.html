@@ -4,12 +4,18 @@
   </div>
   <div class="row">
     <div ng-repeat="bookmark in user.bookmarks" class="col-md-11">
-      <h3>{{ bookmark.title }}</h3>
-      <p>{{ bookmark.description }}</p>
-      <a href="">{{ bookmark.link }}</a>
-      <div class="category-tag-container">
-        <span class="category-tag" ng-repeat="category in bookmark.categories"><a ui-sref="showCategory({id: category.id})">{{ category.name }}</a></span>
-        <create-category category-array="bookmark.categories" bookmark-id="{{ bookmark.id }}"></create-category>
+      <div class="col-md-1">
+        <a href="" ng-click="vote(bookmark.id, true)">up</a><br>
+        <a href="" ng-click="vote(bookmark.id, false)">down</a>
+      </div>
+      <div class="col-md-11">
+        <h3>{{ bookmark.title }}</h3>
+        <p>{{ bookmark.description }}</p>
+        <a href="">{{ bookmark.link }}</a>
+        <div class="category-tag-container">
+          <span class="category-tag" ng-repeat="category in bookmark.categories"><a ui-sref="showCategory({id: category.id})">{{ category.name }}</a></span>
+          <create-category category-array="bookmark.categories" bookmark-id="{{ bookmark.id }}"></create-category>
+        </div>
       </div>
     </div>
   </div>

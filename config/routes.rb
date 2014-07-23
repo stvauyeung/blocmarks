@@ -8,6 +8,7 @@ Blocmarks::Application.routes.draw do
     post '/bookmarks', to: 'bookmarks#create'
     post '/categories', to: 'categories#create'
     get '/categories/:id', to: 'categories#show'
+    post '/votes', to: 'votes#create'
   end
 
   root to: 'static_pages#home'
