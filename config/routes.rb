@@ -6,8 +6,10 @@ Blocmarks::Application.routes.draw do
     post '/users', to: 'users#create'
     get '/users/:id', to: 'users#show'
     post '/bookmarks', to: 'bookmarks#create'
+    get '/bookmarks/:id', to: 'bookmarks#show'
     post '/categories', to: 'categories#create'
     get '/categories/:id', to: 'categories#show'
+    post '/votes', to: 'votes#create'
   end
 
   root to: 'static_pages#home'

@@ -6,6 +6,11 @@ class Api::BookmarksController < ApplicationController
     render nothing: true
   end
 
+  def show
+    @bookmark = Bookmark.find(params[:id])
+    render json: @bookmark, root: false
+  end
+
   private
 
   def bookmark_params

@@ -20,9 +20,13 @@ controllers
         });
     };
   }])
-  .controller('UserHomeCtrl', ['$scope', '$rootScope', 'currentUser', function($scope, $rootScope, currentUser) {
+  .controller('UserHomeCtrl', ['$scope', '$rootScope', 'currentUser', 'Vote', function($scope, $rootScope, currentUser, Vote) {
     $rootScope.user = currentUser.data;
     $scope.user = $rootScope.user;
+    $scope.vote = function(bookmarkId, value) {
+      newVote = {bookmark_id: bookmarkId, value: value};
+      Vote.create(newVote);
+    };
   }])
   .controller('BookmarksCtrl', ['$scope', 'Bookmark', function($scope, Bookmark) {
     $scope.createNewBookmark = function(bookmark) {
