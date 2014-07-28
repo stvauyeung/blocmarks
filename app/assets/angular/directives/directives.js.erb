@@ -33,7 +33,7 @@ app.directive('createCategory', ['$http', 'Category', function($http, Category) 
   }
 }]);
 
-app.directive('voteCount', ['Bookmark', function(Bookmark) {
+app.directive('voteCount', ['$http', function($http) {
   return {
     restrict: 'E',
     template: "<div>{{ voteCount }}</div>",
@@ -41,12 +41,12 @@ app.directive('voteCount', ['Bookmark', function(Bookmark) {
       bookmarkId: '='
     },
     link: function(scope, element, attributes) {
-      var bookmarkVoteCount = function() {
-        bookmark = Bookmark.show(scope.bookmarkId);
-        voteCount = Object.keys(bookmark.votes).length;
-        return voteCount;
-      };
-      scope.voteCount = bookmarkVoteCount();
+      $http.get('/api/bookmarks/' + scope.bookmarkId)
+        .success(function(data) {
+          scope.voteCount = data.votes.length;
+        }).error(function(data) {
+          console.log('Error showing bookmark');
+        })
     }
   }
 }]);

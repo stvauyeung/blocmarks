@@ -1,5 +1,15 @@
 blocMarks = angular.module('blocMarks', ['ui.router', 'blocMarksControllers', 'blocMarksDirectives', 'blocMarksServices', 'ngCookies', 'ngResource','blocMarksModels', 'ui.bootstrap']);
 
+blocMarks.run(
+    ['$rootScope', '$state', '$window', '$cookies', function($rootScope, $state, $window, $cookies) {
+      $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState) {
+        if (toState.name === 'showCategory' && $cookies.user == '') {
+          $window.location.href = '/login';
+          alert('You must be signed in!');
+        }
+      });
+    }]);
+
 blocMarks.config(['$stateProvider', '$locationProvider', '$httpProvider', function($stateProvider, $locationProvider, $httpProvider) {
   $locationProvider.html5Mode(true);
   $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
